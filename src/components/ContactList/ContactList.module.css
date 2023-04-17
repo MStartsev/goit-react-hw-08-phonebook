@@ -1,0 +1,18 @@
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  max-width: 400px;
+  min-width: 260px;
+  width: 50%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
