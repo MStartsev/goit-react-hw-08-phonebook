@@ -1,5 +1,5 @@
 import {
-  Component,
+  useState,
   PropTypes,
   Form,
   Label,
@@ -8,46 +8,45 @@ import {
   FormButton,
 } from './exports';
 
-class ContactForm extends Component {
-  state = { name: '', number: '' };
+const ContactForm = ({ onSubmit }) => {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
 
-  stateReset = () => {
-    this.setState({ name: '', number: '' });
+  const stateReset = () => {
+    setName('');
+    setNumber('');
   };
 
-  onInputChange = e => {
+  const onInputChange = e => {
     const { name } = e.currentTarget;
     let { value } = e.currentTarget;
 
-    if (name === 'number') value = value.replaceAll(' ', '');
-    this.setState({ [name]: value.trimStart().replaceAll('  ', ' ') });
-    console.log(name, value);
+    name === 'number'
+      ? setNumber(value.replaceAll(' ', ''))
+      : setName(value.trimStart().replaceAll('  ', ' '));
   };
 
-  onHandleSubmit = e => {
+  const onHandleSubmit = e => {
     e.preventDefault();
 
-    this.props.onSubmit(this.state);
-    this.stateReset();
+    onSubmit({ name, number });
+    stateReset();
   };
 
-  render() {
-    const { name, number } = this.state;
-    return (
-      <Form onSubmit={this.onHandleSubmit}>
-        <Label>
-          Name
-          <InputText onChange={this.onInputChange} value={name} />
-        </Label>
-        <Label>
-          Number
-          <InputTel onChange={this.onInputChange} value={number} />
-        </Label>
-        <FormButton type="submit">Add Contact</FormButton>
-      </Form>
-    );
-  }
-}
+  return (
+    <Form onSubmit={onHandleSubmit}>
+      <Label>
+        Name
+        <InputText onChange={onInputChange} value={name} />
+      </Label>
+      <Label>
+        Number
+        <InputTel onChange={onInputChange} value={number} />
+      </Label>
+      <FormButton type="submit">Add Contact</FormButton>
+    </Form>
+  );
+};
 
 ContactForm.propTypes = {
   onInputChange: PropTypes.func,

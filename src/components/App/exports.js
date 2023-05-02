@@ -1,4 +1,4 @@
-export { default as React, Component } from 'react';
+export { default as React, useState, useEffect } from 'react';
 export { nanoid } from 'nanoid';
 
 export { default as ContactForm } from '../ContactForm/ContactForm';

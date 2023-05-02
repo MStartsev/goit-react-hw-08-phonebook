@@ -4,17 +4,13 @@ import {
   ButtonDeleteContact,
 } from './ContactListItemElements';
 
-function ContactListItem({ name, number, onContactDelete }) {
-  return (
-    <ContactItem>
-      <ContactText>
-        {name}: {number}
-      </ContactText>
-      <ButtonDeleteContact onClick={onContactDelete}>
-        Delete
-      </ButtonDeleteContact>
-    </ContactItem>
-  );
-}
+const ContactListItem = ({ name, number, onContactDelete }) => (
+  <ContactItem>
+    <ContactText>
+      {name}: {number}
+    </ContactText>
+    <ButtonDeleteContact onClick={onContactDelete}>Delete</ButtonDeleteContact>
+  </ContactItem>
+);
 
 export default ContactListItem;
