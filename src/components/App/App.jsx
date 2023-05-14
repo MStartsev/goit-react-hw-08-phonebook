@@ -7,9 +7,7 @@ import {
   ContactForm,
   ContactList,
   Filter,
-  Container,
-  Title,
-  SubTitle,
+  css,
 } from 'components/App/exports';
 
 const localСontacts = localStorage.getItem('contacts');
@@ -57,16 +55,16 @@ export default function App() {
     );
 
   return (
-    <Container>
-      <Title>Phonebook</Title>
+    <div className={css.container}>
+      <h1 className={css.title}>Phonebook</h1>
       <ContactForm onSubmit={onAddContact} />
-      <SubTitle>Contacts</SubTitle>
+      <h2 className={css.subtitle}>Contacts</h2>
       <Filter value={filter} onChange={changeFilter} />
       <ContactList
         contacts={contacts}
         getFilteredContacts={getFilteredContacts}
         onContactDelete={onContactDelete}
       />
-    </Container>
+    </div>
   );
 }

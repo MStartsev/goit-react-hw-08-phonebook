@@ -6,6 +6,8 @@ import {
   InputText,
   InputTel,
   FormButton,
+  Input,
+  css,
 } from './exports';
 
 const ContactForm = ({ onSubmit }) => {
@@ -35,6 +37,7 @@ const ContactForm = ({ onSubmit }) => {
 
   return (
     <Form onSubmit={onHandleSubmit}>
+      <Input onChange={onInputChange} value={name} textValue="name" />
       <Label>
         Name
         <InputText onChange={onInputChange} value={name} />
