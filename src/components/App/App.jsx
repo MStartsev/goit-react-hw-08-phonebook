@@ -2,6 +2,8 @@ import {
   React,
   useState,
   useEffect,
+  useSelector,
+  getContacts,
   nanoid,
   contactsTest,
   ContactForm,
@@ -13,6 +15,8 @@ import {
 const localСontacts = localStorage.getItem('contacts');
 
 export default function App() {
+  const _contacts = useSelector(getContacts);
+
   const [contacts, setContacts] = useState(
     JSON.parse(localСontacts) || contactsTest
   );
