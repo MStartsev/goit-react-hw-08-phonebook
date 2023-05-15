@@ -1,18 +1,12 @@
-import {
-  PropTypes,
-  ContactListItem,
-  ContactListContainer,
-  ContactsList,
-  ContactNotification,
-} from './exports';
+import { PropTypes, ContactListItem, css } from './exports';
 
 const ContactList = ({ contacts, onContactDelete, getFilteredContacts }) => {
   const filteredContacts = getFilteredContacts();
 
   return (
-    <ContactListContainer>
+    <div className={css['list-container']}>
       {contacts.length ? (
-        <ContactsList>
+        <ul className={css.list}>
           {filteredContacts.map(({ id, name, number }) => (
             <ContactListItem
               key={id}
@@ -21,13 +15,11 @@ const ContactList = ({ contacts, onContactDelete, getFilteredContacts }) => {
               onContactDelete={() => onContactDelete(id)}
             />
           ))}
-        </ContactsList>
+        </ul>
       ) : (
-        <ContactNotification>
-          You don't have any contacts in your phonebook
-        </ContactNotification>
+        <p>You don't have any contacts in your phonebook</p>
       )}
-    </ContactListContainer>
+    </div>
   );
 };
 

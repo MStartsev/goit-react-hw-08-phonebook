@@ -1,16 +1,14 @@
-import {
-  ContactItem,
-  ContactText,
-  ButtonDeleteContact,
-} from './ContactListItemElements';
+import css from './ContactListItem.module.css';
 
 const ContactListItem = ({ name, number, onContactDelete }) => (
-  <ContactItem>
-    <ContactText>
+  <li className={css.item}>
+    <p className={css.text}>
       {name}: {number}
-    </ContactText>
-    <ButtonDeleteContact onClick={onContactDelete}>Delete</ButtonDeleteContact>
-  </ContactItem>
+    </p>
+    <button className={css.button} type="button" onClick={onContactDelete}>
+      Delete
+    </button>
+  </li>
 );
 
 export default ContactListItem;

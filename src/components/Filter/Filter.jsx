@@ -1,12 +1,18 @@
-import { PropTypes, Container, Label, InputText } from './exports';
+import css from './Filter.module.css';
+import PropTypes from 'prop-types';
 
 const Filter = ({ value, onChange }) => (
-  <Container>
-    <Label>
+  <div className={css.container}>
+    <label className={css.label}>
       Find contacts by name
-      <InputText value={value} onChange={onChange} />
-    </Label>
-  </Container>
+      <input
+        value={value}
+        onChange={onChange}
+        type="text"
+        placeholder="Enter name"
+      />
+    </label>
+  </div>
 );
 
 Filter.propTypes = {

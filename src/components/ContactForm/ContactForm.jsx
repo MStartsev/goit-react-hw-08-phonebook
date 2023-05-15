@@ -1,14 +1,4 @@
-import {
-  useState,
-  PropTypes,
-  Form,
-  Label,
-  InputText,
-  InputTel,
-  FormButton,
-  Input,
-  css,
-} from './exports';
+import { useState, PropTypes, ContactFormInput, css } from './exports';
 
 const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
@@ -24,8 +14,17 @@ const ContactForm = ({ onSubmit }) => {
     let { value } = e.currentTarget;
 
     name === 'number'
-      ? setNumber(value.replaceAll(' ', ''))
-      : setName(value.trimStart().replaceAll('  ', ' '));
+      ? setNumber(
+          value
+            .replaceAll(' ', '')
+            .replaceAll(/[a-zA-Zа-яА-ЯЇїЄєІі'`" =!№@#$%^&*/[\],?;:.\\{}]/g, '')
+        )
+      : setName(
+          value
+            .trimStart()
+            .replaceAll('  ', ' ')
+            .replaceAll(/[0-9`'"=!№@#$%^&*/[\],?;:.\\{}]/g, '')
+        );
   };
 
   const onHandleSubmit = e => {
@@ -36,18 +35,23 @@ const ContactForm = ({ onSubmit }) => {
   };
 
   return (
-    <Form onSubmit={onHandleSubmit}>
-      <Input onChange={onInputChange} value={name} textValue="name" />
-      <Label>
-        Name
-        <InputText onChange={onInputChange} value={name} />
-      </Label>
-      <Label>
-        Number
-        <InputTel onChange={onInputChange} value={number} />
-      </Label>
-      <FormButton type="submit">Add Contact</FormButton>
-    </Form>
+    <form className={css.form} onSubmit={onHandleSubmit}>
+      <ContactFormInput
+        onChange={onInputChange}
+        value={name}
+        textLabel="name"
+      />
+
+      <ContactFormInput
+        onChange={onInputChange}
+        value={number}
+        textLabel="number"
+      />
+
+      <button className={css['form-button']} type="submit">
+        Add Contact
+      </button>
+    </form>
   );
 };
 
