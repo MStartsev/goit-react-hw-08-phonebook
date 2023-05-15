@@ -1,7 +1,7 @@
 import css from './ContactForm.module.css';
 
 const NAME_PATTERN =
-  "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
+  "^[a-zA-Zа-яА-ЯЇїЄєІі]+(([' -][a-zA-Zа-яА-ЯЇїЄєІі ])?[a-zA-Zа-яА-ЯЇїЄєІі]*)*$";
 const TEL_PATTERN =
   '\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}';
 

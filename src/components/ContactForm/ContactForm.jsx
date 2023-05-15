@@ -15,15 +15,16 @@ const ContactForm = ({ onSubmit }) => {
 
     name === 'number'
       ? setNumber(
-          value
-            .replaceAll(' ', '')
-            .replaceAll(/[a-zA-Zа-яА-ЯЇїЄєІі'`" =!№@#$%^&*/[\],?;:.\\{}]/g, '')
+          value.replaceAll(
+            /[a-zA-Zа-яА-ЯЇїЄєІі'`" =!№@#$%^&*/[\],?;:.\\{}]/g,
+            ''
+          )
         )
       : setName(
           value
             .trimStart()
             .replaceAll('  ', ' ')
-            .replaceAll(/[0-9`'"=!№@#$%^&*/[\],?;:.\\{}]/g, '')
+            .replaceAll(/[0-9`'"=+!№@#$%^&*/[\],?;:.\\{}]/g, '')
         );
   };
 
