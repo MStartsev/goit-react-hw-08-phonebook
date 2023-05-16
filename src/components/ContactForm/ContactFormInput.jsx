@@ -9,19 +9,19 @@ const CustomInput = props => (
   <input {...props} className={css.input} required />
 );
 
-export const ContactFormInput = props => {
+export const ContactFormInput = ({ textLabel, onChange, value }) => {
   const toUpperCaseFirstLetter = word =>
     word.charAt(0).toUpperCase() + word.slice(1);
 
-  const inputNameType = props.textLabel === 'name';
+  const inputNameType = textLabel === 'name';
 
   return (
     <label className={css.label}>
-      {toUpperCaseFirstLetter(props.textLabel)}
+      {toUpperCaseFirstLetter(textLabel)}
       <CustomInput
-        onChange={props.onChange}
-        value={props.value}
-        className={props.className}
+        onChange={onChange}
+        value={value}
+        className={css.input}
         type={inputNameType ? 'text' : 'tel'}
         name={inputNameType ? 'name' : 'number'}
         pattern={inputNameType ? `${NAME_PATTERN}` : `${TEL_PATTERN}`}

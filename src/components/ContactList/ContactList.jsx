@@ -1,7 +1,31 @@
-import { PropTypes, ContactListItem, css } from './exports';
+import {
+  useDispatch,
+  useSelector,
+  useMemo,
+  deleteContact,
+  getContacts,
+  getFilter,
+  ContactListItem,
+  css,
+} from './exports';
 
-const ContactList = ({ contacts, onContactDelete, getFilteredContacts }) => {
-  const filteredContacts = getFilteredContacts();
+const ContactList = () => {
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
+
+  const dispatch = useDispatch();
+
+  const onContactDelete = id => {
+    dispatch(deleteContact(id));
+  };
+
+  const filteredContacts = useMemo(
+    () =>
+      contacts.filter(contact =>
+        contact.name.toLowerCase().includes(filter.toLowerCase())
+      ),
+    [contacts, filter]
+  );
 
   return (
     <div className={css['list-container']}>
@@ -21,18 +45,6 @@ const ContactList = ({ contacts, onContactDelete, getFilteredContacts }) => {
       )}
     </div>
   );
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  getFilteredContacts: PropTypes.func.isRequired,
-  onDeleteContact: PropTypes.func,
 };
 
 export default ContactList;

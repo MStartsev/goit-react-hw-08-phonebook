@@ -1,8 +1,19 @@
-import { useState, PropTypes, ContactFormInput, css } from './exports';
+import {
+  useDispatch,
+  useSelector,
+  useState,
+  nanoid,
+  addContact,
+  getContacts,
+  ContactFormInput,
+  css,
+} from './exports';
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const stateReset = () => {
     setName('');
@@ -28,10 +39,34 @@ const ContactForm = ({ onSubmit }) => {
         );
   };
 
+  const includesContact = () =>
+    contacts.some(contact => {
+      if (contact.name.toLowerCase().includes(name.toLowerCase())) {
+        alert(`${name} is already in contacts.`);
+        return true;
+      }
+
+      if (contact.number.includes(number)) {
+        alert(`${number} is already in contacts.`);
+        return true;
+      }
+
+      return false;
+    });
+
   const onHandleSubmit = e => {
     e.preventDefault();
 
-    onSubmit({ name, number });
+    if (includesContact()) return;
+
+    dispatch(
+      addContact({
+        name,
+        number,
+        id: nanoid(),
+      })
+    );
+
     stateReset();
   };
 
@@ -54,11 +89,6 @@ const ContactForm = ({ onSubmit }) => {
       </button>
     </form>
   );
-};
-
-ContactForm.propTypes = {
-  onInputChange: PropTypes.func,
-  onAddContact: PropTypes.func,
 };
 
 export default ContactForm;
