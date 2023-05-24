@@ -10,7 +10,7 @@
   min-width: 320px;
   width: 50%;
   border: 1px solid #777;
-  box-shadow: rgb(223, 238, 253) 3px 3px 3px inset,
+  box-shadow: rgb(222, 238, 253) 3px 3px 3px inset,
     rgb(236, 243, 250) 5px 5px 4px inset, white -5px -5px 4px inset;
 }
 
