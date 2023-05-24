@@ -2,30 +2,31 @@ import {
   useDispatch,
   useSelector,
   useState,
-  nanoid,
   addContact,
-  getContacts,
+  selectContacts,
   ContactFormInput,
   css,
 } from './exports';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
+
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+
+  const contacts = useSelector(selectContacts);
 
   const stateReset = () => {
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   const onInputChange = e => {
     const { name } = e.currentTarget;
     let { value } = e.currentTarget;
 
-    name === 'number'
-      ? setNumber(
+    name === 'phone'
+      ? setPhone(
           value.replaceAll(
             /[a-zA-Zа-яА-ЯЇїЄєІі'`" =!№@#$%^&*/[\],?;:.\\{}]/g,
             ''
@@ -46,8 +47,8 @@ const ContactForm = () => {
         return true;
       }
 
-      if (contact.number.includes(number)) {
-        alert(`${number} is already in contacts.`);
+      if (contact.phone.includes(phone)) {
+        alert(`${phone} is already in contacts.`);
         return true;
       }
 
@@ -62,8 +63,7 @@ const ContactForm = () => {
     dispatch(
       addContact({
         name,
-        number,
-        id: nanoid(),
+        phone,
       })
     );
 
@@ -80,8 +80,8 @@ const ContactForm = () => {
 
       <ContactFormInput
         onChange={onInputChange}
-        value={number}
-        textLabel="number"
+        value={phone}
+        textLabel="phone"
       />
 
       <button className={css['form-button']} type="submit">

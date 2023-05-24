@@ -1,19 +1,30 @@
 import {
+  useEffect,
+  fetchContacts,
   useDispatch,
   useSelector,
   useMemo,
+  selectIsLoading,
+  selectError,
   deleteContact,
-  getContacts,
-  getFilter,
+  selectContacts,
+  selectFilter,
   ContactListItem,
   css,
 } from './exports';
 
 const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
 
   const dispatch = useDispatch();
+
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const onContactDelete = id => {
     dispatch(deleteContact(id));
@@ -29,19 +40,21 @@ const ContactList = () => {
 
   return (
     <div className={css['list-container']}>
+      {isLoading && !error && <p>Loading contact list...</p>}
       {contacts.length ? (
         <ul className={css.list}>
-          {filteredContacts.map(({ id, name, number }) => (
+          {filteredContacts.map(({ id, name, phone }) => (
             <ContactListItem
               key={id}
               name={name}
-              number={number}
+              phone={phone}
               onContactDelete={() => onContactDelete(id)}
             />
           ))}
         </ul>
       ) : (
-        <p>You don't have any contacts in your phonebook</p>
+        !isLoading &&
+        !error && <p>You don't have any contacts in your phonebook</p>
       )}
     </div>
   );
