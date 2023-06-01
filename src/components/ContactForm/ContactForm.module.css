@@ -1,17 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  padding-block: 15px;
+}
+
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  background-color: #eef0e4;
+  background-color: #eef0e450;
   border-radius: 10px;
   padding-block: 20px;
   max-width: 360px;
   min-width: 320px;
   width: 50%;
-  border: 1px solid #777;
-  box-shadow: rgb(222, 238, 253) 3px 3px 3px inset,
-    rgb(236, 243, 250) 5px 5px 4px inset, white -5px -5px 4px inset;
+  border: 2px solid #05516d31;
+  box-shadow: rgba(222, 238, 253, 0.675) 3px 3px 3px inset,
+    rgba(236, 243, 250, 0.682) 5px 5px 4px inset,
+    rgba(255, 255, 255, 0.37) -5px -5px 4px inset;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
 .label {

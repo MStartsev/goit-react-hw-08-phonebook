@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'Pacifico';
+  src: url('fonts/pacifico-latin-400.woff2') format('woff2'),
+    url('fonts/pacifico-latin-400.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+.container {
+  display: flex;
+  gap: 15px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px 20px;
+  margin-inline: auto;
+  border-bottom: 1px solid;
+  box-shadow: 0px 15px 10px -15px #dcebb3;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  list-style: none;
+  gap: 20px 0px;
+}
+
+.link {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+.activeLink {
+  color: rgb(12, 46, 181);
+  border-bottom: 2px solid rgb(12, 46, 181);
+}
+
+.title {
+  font-family: 'Pacifico', sans-serif;
+  font-size: 28px;
+  border-bottom: none;
+}

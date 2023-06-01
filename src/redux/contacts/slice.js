@@ -1,8 +1,47 @@
+// import { createSlice } from '@reduxjs/toolkit';
+
+// import { addContact, fetchContacts, deleteContact } from './operations';
+
+// export const contactsSlice = createSlice({
+//   name: 'contacts',
+//   initialState: {
+//     items: [],
+//     isLoading: false,
+//     error: null,
+//   },
+
+//   extraReducers: builder => {
+//     builder
+//       .addCase(addContact.pending, state => {
+//         state.isLoading = true;
+//       })
+//       .addCase(addContact.fulfilled, (state, action) => {
+//         state.items = [...state.items, action.payload];
+//       })
+//       .addCase(fetchContacts.pending, state => {
+//         state.isLoading = true;
+//       })
+//       .addCase(fetchContacts.fulfilled, (state, action) => {
+//         state.items = action.payload;
+//         state.isLoading = false;
+//       })
+//       .addCase(fetchContacts.rejected, (state, action) => {
+//         state.error = action.payload;
+//         state.isLoading = false;
+//       })
+//       .addCase(deleteContact.fulfilled, (state, action) => {
+//         state.items = state.items.filter(
+//           contact => contact.id !== action.payload
+//         );
+//       });
+//   },
+// });
+
 import { createSlice } from '@reduxjs/toolkit';
 import { batch } from 'react-redux';
 import { fetchContacts, deleteContact, addContact } from './operations';
 
-const contactsSlice = createSlice({
+export const contactsSlice = createSlice({
   name: 'contacts',
   initialState: { items: [], isLoading: false, error: null },
   extraReducers: builder => {

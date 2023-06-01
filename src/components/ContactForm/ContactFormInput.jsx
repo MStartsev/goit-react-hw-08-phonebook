@@ -23,12 +23,12 @@ export const ContactFormInput = ({ textLabel, onChange, value }) => {
         value={value}
         className={css.input}
         type={inputNameType ? 'text' : 'tel'}
-        name={inputNameType ? 'name' : 'phone'}
+        name={inputNameType ? 'name' : 'number'}
         pattern={inputNameType ? `${NAME_PATTERN}` : `${TEL_PATTERN}`}
         title={
           inputNameType
             ? "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            : 'Phone phone must be digits and can contain spaces, dashes, parentheses and can start with +'
+            : 'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
         }
       />
     </label>

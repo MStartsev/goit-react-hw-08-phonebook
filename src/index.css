@@ -1,4 +1,10 @@
-@import-normalize; /* bring in normalize.css styles */
+@import-normalize;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -14,12 +20,41 @@ code {
     monospace;
 }
 
-p,
-ul,
-li,
-span,
-h1,
-h2 {
-  margin: 0;
-  padding: 0;
+a {
+  text-decoration: none;
+}
+#root {
+  min-height: 100vh;
+  background: radial-gradient(
+        35.36% 35.36% at 100% 25%,
+        #0000 66%,
+        #b7b7db 68% 70%,
+        #0000 72%
+      )
+      21px 21px / calc(2 * 21px) calc(2 * 21px),
+    radial-gradient(
+        35.36% 35.36% at 0 75%,
+        #0000 66%,
+        #b7b7db 68% 70%,
+        #0000 72%
+      )
+      21px 21px / calc(2 * 21px) calc(2 * 21px),
+    radial-gradient(
+        35.36% 35.36% at 100% 25%,
+        #0000 66%,
+        #b7b7db 68% 70%,
+        #0000 72%
+      )
+      0 0 / calc(2 * 21px) calc(2 * 21px),
+    radial-gradient(
+        35.36% 35.36% at 0 75%,
+        #0000 66%,
+        #b7b7db 68% 70%,
+        #0000 72%
+      )
+      0 0 / calc(2 * 21px) calc(2 * 21px),
+    repeating-conic-gradient(#64b2d1 0 25%, #0000 0 50%) 0 0 / calc(2 * 21px)
+      calc(2 * 21px),
+    radial-gradient(#0000 66%, #b7b7db 68% 70%, #0000 72%) 0 calc(21px / 2) /
+      21px 21px #64b2d1;
 }

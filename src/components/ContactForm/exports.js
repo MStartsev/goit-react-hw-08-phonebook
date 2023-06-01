@@ -1,10 +1,9 @@
 export { useState } from 'react';
-export { useDispatch, useSelector } from 'react-redux';
-export { nanoid } from 'nanoid';
+export { useDispatch } from 'react-redux';
+// export { nanoid } from 'nanoid';
 
-export { selectContacts } from 'redux/selectors';
-
-export { fetchContacts, addContact } from 'redux/operations';
+export { useSelectors } from 'hooks/UseSelectors';
+export { fetchContacts, addContact } from 'redux/contacts/operations';
+export { ContactFormInput } from './ContactFormInput';
 
 export { default as css } from './ContactForm.module.css';
-export { ContactFormInput } from './ContactFormInput';

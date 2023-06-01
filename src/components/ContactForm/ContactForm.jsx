@@ -1,32 +1,31 @@
 import {
   useDispatch,
-  useSelector,
   useState,
   addContact,
-  selectContacts,
+  useSelectors,
   ContactFormInput,
   css,
 } from './exports';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
 
-  const contacts = useSelector(selectContacts);
+  const { contacts } = useSelectors();
 
   const stateReset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   const onInputChange = e => {
     const { name } = e.currentTarget;
     let { value } = e.currentTarget;
 
-    name === 'phone'
-      ? setPhone(
+    name === 'number'
+      ? setNumber(
           value.replaceAll(
             /[a-zA-Zа-яА-ЯЇїЄєІі'`" =!№@#$%^&*/[\],?;:.\\{}]/g,
             ''
@@ -47,8 +46,8 @@ const ContactForm = () => {
         return true;
       }
 
-      if (contact.phone.includes(phone)) {
-        alert(`${phone} is already in contacts.`);
+      if (contact.number.includes(number)) {
+        alert(`${number} is already in contacts.`);
         return true;
       }
 
@@ -63,7 +62,7 @@ const ContactForm = () => {
     dispatch(
       addContact({
         name,
-        phone,
+        number,
       })
     );
 
@@ -71,23 +70,26 @@ const ContactForm = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={onHandleSubmit}>
-      <ContactFormInput
-        onChange={onInputChange}
-        value={name}
-        textLabel="name"
-      />
+    <div className={css.container}>
+      <h2 className={css.title}>New Contact</h2>
+      <form className={css.form} onSubmit={onHandleSubmit}>
+        <ContactFormInput
+          onChange={onInputChange}
+          value={name}
+          textLabel="name"
+        />
 
-      <ContactFormInput
-        onChange={onInputChange}
-        value={phone}
-        textLabel="phone"
-      />
+        <ContactFormInput
+          onChange={onInputChange}
+          value={number}
+          textLabel="number"
+        />
 
-      <button className={css['form-button']} type="submit">
-        Add Contact
-      </button>
-    </form>
+        <button className={css['form-button']} type="submit">
+          Add Contact
+        </button>
+      </form>
+    </div>
   );
 };
 
