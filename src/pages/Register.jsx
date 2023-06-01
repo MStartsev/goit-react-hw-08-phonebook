@@ -43,7 +43,7 @@ const Register = () => {
             />
             {errors.name && (
               <p className={css['error-message']} role="alert">
-                Input You Name ( 3+ characters).{' '}
+                Input Your Name ( 3+ characters).{' '}
               </p>
             )}
           </label>
