@@ -76,9 +76,11 @@ export const Navigation = () => {
         </nav>
       </header>
       <main>
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
+        <div className={css.container}>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </div>
       </main>
     </>
   );

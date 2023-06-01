@@ -5,8 +5,10 @@
 }
 
 .text {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: left;
-  font-size: 14px;
+  font-size: 16px;
+  hyphens: manual;
 }
 .button {
   font-size: 10px;
@@ -22,4 +24,11 @@
 .button:hover {
   background-color: #618582;
   color: #fff;
+}
+
+.number {
+  margin-inline: 15px;
+  color: rgb(0, 56, 101);
+  font-style: oblique;
+  line-height: 1.7;
 }

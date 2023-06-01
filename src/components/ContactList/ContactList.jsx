@@ -2,28 +2,17 @@ import {
   useEffect,
   fetchContacts,
   useDispatch,
-  // useSelector,
   useSelectors,
   useMemo,
-  // selectIsLoading,
-  // selectError,
   deleteContact,
-  // selectContacts,
-  // selectFilter,
   ContactListItem,
   css,
 } from './exports';
 
 const ContactList = () => {
   const { contacts, filter, isLoggedIn, isLoading, error } = useSelectors();
-  // const contacts = useSelector(selectContacts);
-  // const filter = useSelector(selectFilter);
 
   const dispatch = useDispatch();
-
-  // const isLoading = useSelector(selectIsLoading);
-  // const error = useSelector(selectError);
-
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
