@@ -29,7 +29,7 @@ const Register = () => {
   return (
     <div className={css['form-container']}>
       <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className={css['form-title']}>Sign Up</h1>
+        <h1 className={css['form-title']}>Register</h1>
         <div className={css.content}>
           <label className={css.label}>
             <input

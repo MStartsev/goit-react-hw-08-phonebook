@@ -58,7 +58,7 @@ export const Navigation = () => {
                       }
                       to="/register"
                     >
-                      SignUp
+                      Register
                     </NavLink>
                     <NavLink
                       className={({ isActive }) =>
@@ -66,7 +66,7 @@ export const Navigation = () => {
                       }
                       to="/login"
                     >
-                      LogIn
+                      Sign In
                     </NavLink>
                   </div>
                 </li>
